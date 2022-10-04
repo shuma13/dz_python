@@ -1,3 +1,9 @@
+# Напишите программу, которая принимает на вход вещественное число и показывает сумму его цифр.
+# НЕОБЯЗАТЕЛЬНО Попробовать решить не переводя числа в строку
+# Пример:
+# 6782 -> 23
+# 0,56 -> 11
+
 number = float(input("Введите число: "))
 def function_sum(n):
     res=0
@@ -5,10 +11,17 @@ def function_sum(n):
         c= n%10
         res= res+c
         n=int(n/10)
-    return res
+    return int(res)
 
-while number != int(number):
-    number=number*10
-    print(number) 
-result = function_sum(number)
-print(result)
+if number == int(number):
+    result = function_sum(number)
+    print(result)
+else:
+    c=1
+    while c!=0:
+        number=number*10000
+        c =round(number%10)    
+    number = int(number)
+    res = function_sum(number)
+    print(res)
+
