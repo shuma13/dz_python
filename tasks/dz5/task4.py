@@ -7,24 +7,42 @@ from itertools import count
 
 
 part = 'file.txt'
+newPart = 'newFile.txt'
+secondPart = 'text.txt'
+newSecond = 'newtext.txt'
 with open(part, 'r', encoding ='UTF-8') as data:
    file = data.readline()
 
 newFile = ''
 count=1
-for i in range(len(file)-1):
-    for j in range(1,len(file)): 
-        if file[i] == file[j]:
-            count+=1
-            if i == (len(file)-1):
-                newFile =newFile + str(count) + file[j]
-        else:
-            newFile =newFile + str(count) + file[i]
-            count=1
-            if i == (len(file)-1):
-                newFile =newFile + str(count) + file[j]
+for i in range(1,len(file)): 
+    if file[i] == file[i-1]:
+        count+=1
+    else:
+        newFile =newFile + str(count) + file[i-1]
+        count=1
+        if i == (len(file)-1):
+            newFile =newFile + str(count) + file[i]        
 print(file)
 print(newFile)
+with open(newPart, 'w', encoding ='UTF-8') as data:
+   data.write(newFile)
+with open(secondPart, 'r', encoding ='UTF-8') as data:
+   sfile = data.readline()
+print(sfile)
+num =''
+strnum =''
+for i in sfile:
+    if i.isdigit():
+        num = num +i
+    else:
+        number = int(num)
+        strnum += i * number
+        num = '' 
+print(strnum)
+with open(newSecond, 'w', encoding ='UTF-8') as data:
+   data.write(strnum)
+
 
 
 
